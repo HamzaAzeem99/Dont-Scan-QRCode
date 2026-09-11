@@ -3,65 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Private Camera Dashboard</title>
-
+  <title>Live Camera Dashboard</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- QRCode.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: #111;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .dashboard {
-      width: 90%;
-      max-width: 700px;
-      text-align: center;
-    }
-
-    #qrcode {
-      background: white;
-      padding: 15px;
-      width: fit-content;
-      margin: 20px auto;
-      border-radius: 12px;
-    }
-
-    #remoteVideo {
-      width: 100%;
-      max-width: 650px;
-      background: #000;
-      border-radius: 12px;
-      display: none;
-    }
-
-    #status {
-      margin: 15px;
-    }
-  </style>
 </head>
-
 <body>
 
-  <div class="dashboard">
+  <div class="dashboard-container">
+    <h1>📷 Live Camera Dashboard</h1>
+    <p class="subtitle">Scan the QR code with your mobile phone to stream live camera</p>
 
-    <h1>📷 Private Camera Dashboard</h1>
+    <div id="status" class="status-badge waiting">⏳ Initializing session...</div>
 
-    <div id="qrcode"></div>
+    <div id="qr-section" class="card-section">
+      <div id="qrcode-container">
+        <div id="qrcode"></div>
+      </div>
+      <p style="margin-top: 10px; font-size: 0.9rem; color: #94a3b8;">
+        Scan with your phone or open the link below on the camera device:
+      </p>
+      <div class="copy-link-box">
+        <input type="text" id="cameraUrlInput" readonly value="">
+        <button id="copyBtn" type="button">Copy</button>
+      </div>
+    </div>
 
-    <p id="status">Waiting for user...</p>
-
-    <video id="remoteVideo" autoplay playsinline></video>
-
+    <div id="video-section" class="card-section" style="display: none;">
+      <div class="video-wrapper">
+        <video id="remoteVideo" autoplay playsinline></video>
+      </div>
+      <p class="info-note">WebRTC direct peer-to-peer stream active</p>
+    </div>
   </div>
 
   <script type="module" src="./js/dashboard.js"></script>
-
 </body>
 </html>

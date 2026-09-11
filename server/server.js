@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
 
   socket.on('join-room', (roomId, role) => {
     socket.join(roomId);
-    console.log(`User \({socket.id} joined room\){roomId} as ${role}`);
+    console.log(`User ${socket.id} joined room ${roomId} as ${role}`);
     socket.to(roomId).emit('peer-joined', { socketId: socket.id, role });
   });
 

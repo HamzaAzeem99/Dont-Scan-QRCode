@@ -3,20 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Camera Access</title>
+  <title>Camera Stream</title>
+  <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
 
-  <h1>📷 Camera Access</h1>
+  <div class="camera-container">
+    <h1>📷 Camera Broadcaster</h1>
+    <p class="subtitle">Grant camera permission to stream to the dashboard</p>
 
-  <p id="status">Camera permission required</p>
+    <div id="status" class="status-badge waiting">Camera permission required</div>
 
-  <button id="startBtn">
-    Allow Camera & Start
-  </button>
+    <div class="card-section">
+      <button id="startBtn" class="btn btn-primary">
+        Allow Camera & Start
+      </button>
+
+      <div id="localVideoWrapper" class="video-wrapper" style="display: none; margin-top: 16px;">
+        <video id="localVideo" autoplay playsinline muted></video>
+      </div>
+      <p id="streamInfo" class="info-note" style="display: none;">
+        🔴 Streaming live to dashboard via WebRTC peer connection.
+      </p>
+    </div>
+  </div>
 
   <script type="module" src="./js/camera.js"></script>
-
 </body>
 </html>
