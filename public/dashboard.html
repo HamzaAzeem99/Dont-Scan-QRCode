@@ -2,13 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>Camera QR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Camera Dashboard</title>
 
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
@@ -16,44 +11,57 @@
     body {
       margin: 0;
       min-height: 100vh;
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: white;
     }
 
-    .box {
+    .dashboard {
+      width: 90%;
+      max-width: 700px;
       text-align: center;
-      padding: 30px;
     }
 
     #qrcode {
-      display: flex;
-      justify-content: center;
       background: white;
       padding: 15px;
-      border-radius: 12px;
-      margin: 20px auto;
       width: fit-content;
+      margin: 20px auto;
+      border-radius: 12px;
+    }
+
+    #remoteVideo {
+      width: 100%;
+      max-width: 650px;
+      background: #000;
+      border-radius: 12px;
+      display: none;
+    }
+
+    #status {
+      margin: 15px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="box">
+  <div class="dashboard">
 
-    <h1>📷 Scan to Open Camera</h1>
+    <h1>📷 Private Camera Dashboard</h1>
 
     <div id="qrcode"></div>
 
-    <p>Mobile se QR code scan karein.</p>
+    <p id="status">Waiting for user...</p>
+
+    <video id="remoteVideo" autoplay playsinline></video>
 
   </div>
 
-  <script src="./js/dashboard.js"></script>
+  <script type="module" src="./js/dashboard.js"></script>
 
 </body>
 </html>
