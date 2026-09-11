@@ -17,6 +17,10 @@ app.use(cors());
 // Public folder ko static serve karne ke liye
 app.use(express.static(path.join(__dirname, '../public')));
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/dashboard.html'));
+});
+
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
