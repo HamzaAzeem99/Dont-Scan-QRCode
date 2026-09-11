@@ -1,8 +1,8 @@
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-
 const SUPABASE_URL = "https://mfenqufzpspzcgqgeqaw.supabase.co";
 const SUPABASE_KEY = "sb_publishable_bfR2Kwu5k7tIQ7F6sEypLQ_cArfwl6q";
 
+// Using official Supabase CDN (window.supabase)
+const { createClient } = window.supabase;
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const params = new URLSearchParams(window.location.search);
