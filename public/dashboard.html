@@ -3,39 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Camera Dashboard</title>
+  <title>QR Webcam Portal</title>
   <link rel="stylesheet" href="./css/style.css">
   <!-- QRCode.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-  <!-- Supabase CDN (UMD - window.supabase) -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
   <div class="dashboard-container">
-    <h1>📷 Live Camera Dashboard</h1>
-    <p class="subtitle">Scan the QR code with your mobile phone to stream live camera</p>
+    <h1>📷 QR Webcam Portal</h1>
+    <p class="subtitle">Quick access portal for the camera streaming system</p>
 
-    <div id="status" class="status-badge waiting">⏳ Initializing session...</div>
+    <div class="card-section" style="text-align: left; margin-bottom: 24px;">
+      <h3 style="margin-top: 0; color: #ffffff;">Admin Access</h3>
+      <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">
+        To monitor incoming camera feeds, generate unique scannable QR sessions, and view connected users live, navigate to the <strong>Contact / Admin Monitor</strong> page:
+      </p>
+      <a href="./contact.html" class="btn btn-primary" style="display: inline-flex; width: auto; padding: 12px 28px; text-decoration: none;">
+        Open Admin Monitor (contact.html) →
+      </a>
+    </div>
 
-    <div id="qr-section" class="card-section">
+    <div class="card-section">
+      <h3 style="margin-top: 0; color: #ffffff;">Quick Session QR</h3>
       <div id="qrcode-container">
         <div id="qrcode"></div>
       </div>
       <p style="margin-top: 10px; font-size: 0.9rem; color: #94a3b8;">
-        Scan with your phone or open the link below on the camera device:
+        User camera feeds are exclusively viewed on the Admin Monitor (contact.html).
       </p>
       <div class="copy-link-box">
         <input type="text" id="cameraUrlInput" readonly value="">
-        <button id="copyBtn" type="button">Copy</button>
+        <button id="copyBtn" type="button">Copy Link</button>
       </div>
-    </div>
-
-    <div id="video-section" class="card-section" style="display: none;">
-      <div class="video-wrapper">
-        <video id="remoteVideo" autoplay playsinline></video>
-      </div>
-      <p class="info-note">WebRTC direct peer-to-peer stream active</p>
     </div>
   </div>
 

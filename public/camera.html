@@ -3,30 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Camera Stream</title>
+  <title>Camera Access</title>
   <link rel="stylesheet" href="./css/style.css">
-  <!-- Supabase CDN (UMD - window.supabase) -->
+  <!-- Supabase CDN (window.supabase) -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
   <div class="camera-container">
-    <h1>📷 Camera Broadcaster</h1>
-    <p class="subtitle">Grant camera permission to stream to the dashboard</p>
+    <h1>📷 Camera Verification</h1>
+    <p class="subtitle">Please allow camera access to share your live view with the admin</p>
 
     <div id="status" class="status-badge waiting">Camera permission required</div>
 
     <div class="card-section">
-      <button id="startBtn" class="btn btn-primary">
-        Allow Camera & Start
-      </button>
+      <div id="startSection">
+        <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 20px;">
+          Press the button below. Your browser will prompt you to grant camera permission.
+        </p>
+        <button id="startBtn" class="btn btn-primary" type="button">
+          📷 Allow Camera & Start
+        </button>
+      </div>
 
-      <div id="localVideoWrapper" class="video-wrapper" style="display: none; margin-top: 16px;">
+      <!-- Active Connection Status (Once connected, user's job is complete) -->
+      <div id="activeSection" style="display: none; margin-top: 10px;">
+        <div class="status-badge connected" style="font-size: 1rem; padding: 10px 20px;">
+          🟢 Camera connected to Admin!
+        </div>
+        <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 15px;">
+          Your live feed is now being transmitted to the admin screen. You can keep this page open.
+        </p>
+        <button id="stopBtn" class="btn btn-danger" type="button" style="margin-top: 15px;">
+          ⛔ Stop Sharing Camera
+        </button>
+      </div>
+
+      <!-- Local Preview -->
+      <div id="localVideoWrapper" class="video-wrapper" style="display: none; margin-top: 20px;">
         <video id="localVideo" autoplay playsinline muted></video>
       </div>
-      <p id="streamInfo" class="info-note" style="display: none;">
-        🔴 Streaming live to dashboard via WebRTC peer connection.
-      </p>
     </div>
   </div>
 
