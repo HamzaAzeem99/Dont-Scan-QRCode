@@ -1,4 +1,4 @@
-const socket = io('http://localhost:5000'); // Apne server ka URL yahan dein
+const socket = io('https://qrcodescanner-bay.vercel.app/'); // Apne server ka URL yahan dein
 
 const urlParams = new URLSearchParams(window.location.search);
 const roomId = urlParams.get('room') || 'default-room';
